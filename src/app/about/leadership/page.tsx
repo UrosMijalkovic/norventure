@@ -55,7 +55,7 @@ const team = [
   {
     name: 'Milica Stanic',
     role: 'Junior Analyst',
-    photo: '/team/Milica Stanic.jpeg',
+    photo: '/team/Milica Stanic.jpg',
     shortBio: 'Finance and accounting support with focus on process improvement.',
     bio: 'Milica Stanic is a Junior Analyst with experience in finance and accounting support, financial reporting, and process improvement initiatives. She supports engagement teams with data analysis, documentation, and client deliverables.',
     expertise: ['Finance support', 'Financial reporting', 'Process improvement'],
@@ -64,7 +64,7 @@ const team = [
   {
     name: 'Tamara Djordjevic',
     role: 'Junior Analyst',
-    photo: '/team/Tamara Djordjevic.jpeg',
+    photo: '/team/Tamara Djordjevic.jpg',
     shortBio: 'Seven years of professional experience in financial services.',
     bio: 'Tamara Djordjevic is a Junior Analyst with more than seven years of professional experience spanning sales, operational support, and financial services. She brings strong client management skills and attention to detail to engagement delivery.',
     expertise: ['Financial analysis', 'Business reporting', 'Client management'],

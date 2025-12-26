@@ -37,7 +37,7 @@ export const jurisdictions: Jurisdiction[] = [
     nameSr: 'Srbija',
     code: 'RS',
     flag: '/flags/serbia.png',
-    heroImage: '/countries/belgrade.png',
+    heroImage: '/countries/belgrade.jpg',
     capital: 'Belgrade',
     overview: 'Serbia offers a strategic location at the crossroads of Central and Southeast Europe, with EU candidate status and a growing economy. The country provides a competitive business environment with qualified workforce, developing infrastructure, and improving regulatory framework.',
     taxSystem: {
@@ -90,7 +90,7 @@ export const jurisdictions: Jurisdiction[] = [
     nameSr: 'Crna Gora',
     code: 'ME',
     flag: '/flags/montenegro.png',
-    heroImage: '/countries/podgorica.png',
+    heroImage: '/countries/podgorica.jpg',
     capital: 'Podgorica',
     overview: 'Montenegro offers a business-friendly environment with a developing economy focused on tourism, energy, and services. As an EU candidate country using the Euro, it provides currency stability and increasing alignment with European standards.',
     taxSystem: {
@@ -143,7 +143,7 @@ export const jurisdictions: Jurisdiction[] = [
     nameSr: 'Bosna i Hercegovina',
     code: 'BA',
     flag: '/flags/bosnia.png',
-    heroImage: '/countries/Sarajevo.png',
+    heroImage: '/countries/Sarajevo.jpg',
     capital: 'Sarajevo',
     overview: 'Bosnia and Herzegovina presents unique opportunities with its complex but navigable regulatory structure across two entities (Federation of BiH and Republika Srpska) and Brčko District. The country offers competitive costs and a skilled workforce.',
     taxSystem: {
@@ -196,7 +196,7 @@ export const jurisdictions: Jurisdiction[] = [
     nameSr: 'Severna Makedonija',
     code: 'MK',
     flag: '/flags/north-macedonia.png',
-    heroImage: '/countries/skoplje.png',
+    heroImage: '/countries/skoplje.jpg',
     capital: 'Skopje',
     overview: 'North Macedonia offers a pro-business environment with significant government incentives for foreign investment. As an EU candidate country, it continues to align regulations with European standards while maintaining competitive operating costs.',
     taxSystem: {
@@ -249,7 +249,7 @@ export const jurisdictions: Jurisdiction[] = [
     nameSr: 'Slovenija',
     code: 'SI',
     flag: '/flags/slovenia.png',
-    heroImage: '/countries/ljubljana.png',
+    heroImage: '/countries/ljubljana.jpg',
     capital: 'Ljubljana',
     overview: 'Slovenia, as an EU and Eurozone member, offers the highest level of regulatory alignment with European standards in the region. It provides excellent infrastructure, a highly skilled workforce, and a stable business environment.',
     taxSystem: {
@@ -302,7 +302,7 @@ export const jurisdictions: Jurisdiction[] = [
     nameSr: 'Hrvatska',
     code: 'HR',
     flag: '/flags/croatia.png',
-    heroImage: '/countries/zagreb.png',
+    heroImage: '/countries/zagreb.jpg',
     capital: 'Zagreb',
     overview: 'Croatia, as an EU and Eurozone member (Euro adopted 2023), offers full European integration with access to the single market. The country combines Mediterranean quality of life with developing business infrastructure.',
     taxSystem: {
