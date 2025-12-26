@@ -1,166 +1,336 @@
+'use client';
+
 import Link from 'next/link';
-import { ArrowRight, CheckCircle, Globe, Building, Users, Shield } from 'lucide-react';
-import ServiceCard from '@/components/ServiceCard';
-import CTASection from '@/components/CTASection';
+import { ArrowRight, ArrowUpRight, ChevronRight } from 'lucide-react';
 import { services } from '@/data/services';
 import { jurisdictions } from '@/data/jurisdictions';
+import { useLanguage } from '@/contexts/LanguageContext';
+import { useEffect, useState, useRef } from 'react';
 
 export default function Home() {
+  const { t, language } = useLanguage();
+  const [mounted, setMounted] = useState(false);
+  const [activeService, setActiveService] = useState(0);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   return (
     <>
-      {/* Hero Section */}
-      <section className="bg-[var(--color-gray-light)] py-24 lg:py-32">
-        <div className="container">
+      {/* Hero Section - Cinematic */}
+      <section className="relative min-h-screen flex items-center overflow-hidden bg-[#0a0f18] -mt-[80px] pt-[80px]">
+        {/* Video Background */}
+        <div className="absolute inset-0 z-0">
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover"
+          >
+            <source src="/hero.mp4" type="video/mp4" />
+          </video>
+          {/* Refined gradient overlay */}
+          <div
+            className="absolute inset-0"
+            style={{
+              background: 'linear-gradient(135deg, rgba(10, 15, 24, 0.85) 0%, rgba(10, 15, 24, 0.7) 50%, rgba(10, 15, 24, 0.8) 100%)'
+            }}
+          />
+          {/* Subtle vignette */}
+          <div
+            className="absolute inset-0"
+            style={{
+              background: 'radial-gradient(ellipse at center, transparent 0%, rgba(10, 15, 24, 0.4) 100%)'
+            }}
+          />
+        </div>
+
+        {/* Content */}
+        <div className="container relative z-10 pt-32 pb-24">
           <div className="max-w-4xl">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-[var(--color-navy)] leading-tight mb-6">
-              Accounting, Tax & Corporate Services for International Business
+            {/* Eyebrow */}
+            <div
+              className={`flex items-center gap-4 mb-8 transition-all duration-1000 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+            >
+              <div className="h-px w-12 bg-gradient-to-r from-[#2a9d96] to-transparent" />
+              <span className="text-[#2a9d96] text-sm font-medium tracking-[0.3em] uppercase">
+                Southeast Europe
+              </span>
+            </div>
+
+            {/* Main Headline */}
+            <h1
+              className={`mb-8 transition-all duration-1000 delay-100 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
+              style={{
+                fontWeight: 400,
+                lineHeight: 1.1,
+                letterSpacing: '-0.02em'
+              }}
+            >
+              <span className="text-[#2a9d96]">Professional Services</span>
+              <br />
+              <span className="italic text-white">
+                for International Groups
+              </span>
             </h1>
-            <p className="text-xl text-[var(--color-slate)] mb-8 max-w-2xl">
-              Supporting multinational groups and international businesses operating in Southeast Europe with local expertise and international standards.
+
+            {/* Subheadline */}
+            <p
+              className={`text-xl md:text-2xl text-white/80 max-w-2xl mb-12 leading-relaxed font-light transition-all duration-1000 delay-200 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
+            >
+              Accounting, tax, and corporate services coordinated across six jurisdictions.
+              One partner for your Southeast European operations.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="/services" className="btn btn-primary">
-                Our Services
+
+            {/* CTA Buttons */}
+            <div
+              className={`flex flex-wrap gap-5 mb-20 transition-all duration-1000 delay-300 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
+            >
+              <Link
+                href="/contact"
+                className="group inline-flex items-center gap-3 bg-white text-[#0a0f18] px-8 py-4 text-sm font-medium tracking-[0.1em] uppercase hover:bg-[#2a9d96] hover:text-white transition-all duration-500"
+              >
+                Schedule Consultation
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
-              <Link href="/contact" className="btn btn-secondary">
-                Contact Us
+              <Link
+                href="/services"
+                className="group inline-flex items-center gap-3 border border-white/30 text-white px-8 py-4 text-sm font-medium tracking-[0.1em] uppercase hover:bg-white/10 hover:border-white/50 transition-all duration-500"
+              >
+                View Services
               </Link>
+            </div>
+
+            {/* Stats Row */}
+            <div
+              className={`grid grid-cols-3 gap-8 md:gap-16 pt-12 border-t border-white/10 transition-all duration-1000 delay-500 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
+            >
+              {[
+                { number: '6', label: 'Jurisdictions' },
+                { number: '10+', label: 'Years Experience' },
+                { number: '50+', label: 'Group Clients' },
+              ].map((stat, i) => (
+                <div key={i} className="text-center md:text-left">
+                  <div
+                    className="text-4xl md:text-5xl text-white font-light tracking-tight mb-2"
+                    style={{ fontFamily: 'var(--font-display)' }}
+                  >
+                    {stat.number}
+                  </div>
+                  <div className="text-white/70 text-sm tracking-wide uppercase">
+                    {stat.label}
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
-      </section>
 
-      {/* Value Proposition */}
-      <section className="py-20">
-        <div className="container">
-          <div className="grid lg:grid-cols-4 gap-8">
-            <div className="flex items-start space-x-4">
-              <div className="w-12 h-12 rounded-lg bg-[var(--color-teal)]/10 flex items-center justify-center flex-shrink-0">
-                <Globe className="w-6 h-6 text-[var(--color-teal)]" />
-              </div>
-              <div>
-                <h3 className="font-semibold text-[var(--color-navy)] mb-2">Multi-Jurisdiction</h3>
-                <p className="text-sm text-[var(--color-slate)]">
-                  Coordinated services across 6 Southeast European countries with consistent standards.
-                </p>
-              </div>
-            </div>
-            <div className="flex items-start space-x-4">
-              <div className="w-12 h-12 rounded-lg bg-[var(--color-teal)]/10 flex items-center justify-center flex-shrink-0">
-                <Building className="w-6 h-6 text-[var(--color-teal)]" />
-              </div>
-              <div>
-                <h3 className="font-semibold text-[var(--color-navy)] mb-2">Regional Infrastructure</h3>
-                <p className="text-sm text-[var(--color-slate)]">
-                  Established operations in Serbia with developed IT, security, and operational teams.
-                </p>
-              </div>
-            </div>
-            <div className="flex items-start space-x-4">
-              <div className="w-12 h-12 rounded-lg bg-[var(--color-teal)]/10 flex items-center justify-center flex-shrink-0">
-                <Users className="w-6 h-6 text-[var(--color-teal)]" />
-              </div>
-              <div>
-                <h3 className="font-semibold text-[var(--color-navy)] mb-2">Operational Support</h3>
-                <p className="text-sm text-[var(--color-slate)]">
-                  Ongoing operational services, not just advisory—full back-office support available.
-                </p>
-              </div>
-            </div>
-            <div className="flex items-start space-x-4">
-              <div className="w-12 h-12 rounded-lg bg-[var(--color-teal)]/10 flex items-center justify-center flex-shrink-0">
-                <Shield className="w-6 h-6 text-[var(--color-teal)]" />
-              </div>
-              <div>
-                <h3 className="font-semibold text-[var(--color-navy)] mb-2">International Standards</h3>
-                <p className="text-sm text-[var(--color-slate)]">
-                  IFRS compliance, ERP integration capability, and group reporting expertise.
-                </p>
-              </div>
-            </div>
-          </div>
+        {/* Scroll Indicator */}
+        <div
+          className={`absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 transition-all duration-1000 delay-700 ${mounted ? 'opacity-100' : 'opacity-0'}`}
+        >
+          <div className="w-px h-16 bg-gradient-to-b from-white/30 to-transparent" />
         </div>
       </section>
 
-      {/* Services Section */}
-      <section className="py-20 bg-[var(--color-gray-light)]">
+      {/* Value Proposition - Dark Refined */}
+      <section className="py-28 bg-[#0a0f18] border-t border-white/5">
         <div className="container">
-          <div className="max-w-2xl mb-12">
-            <h2 className="text-3xl font-semibold text-[var(--color-navy)] mb-4">
-              Our Services
+          {/* Section Header */}
+          <div className="max-w-3xl mb-20">
+            <span className="text-[#2a9d96] text-sm font-medium tracking-[0.3em] uppercase block mb-4">
+              Why Norventure
+            </span>
+            <h2 className="text-4xl md:text-5xl font-light leading-tight mb-6" style={{ fontFamily: 'var(--font-display)' }}>
+              <span className="text-[#2a9d96]">A regional partner built for</span>
+              <br />
+              <span className="italic text-white">international standards</span>
             </h2>
-            <p className="text-[var(--color-slate)]">
-              Comprehensive accounting, tax, payroll, and corporate services designed for international businesses and multinational groups operating in the region.
-            </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {services.map((service) => (
-              <ServiceCard
-                key={service.slug}
-                slug={service.slug}
-                title={service.title}
-                description={service.description}
-                icon={service.icon}
-                href={`/services/${service.slug}`}
-              />
+          {/* Value Props Grid */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-white/5">
+            {[
+              {
+                num: '01',
+                title: 'Multi-Jurisdiction Coverage',
+                desc: 'Coordinated services across Serbia, Montenegro, Bosnia, North Macedonia, Slovenia, and Croatia through a single engagement.'
+              },
+              {
+                num: '02',
+                title: 'Regional Infrastructure',
+                desc: 'Established teams with deep local expertise, regulatory knowledge, and practical experience in each market.'
+              },
+              {
+                num: '03',
+                title: 'Group Reporting Standards',
+                desc: 'Deliverables aligned with IFRS, your group policies, and headquarters reporting requirements.'
+              },
+              {
+                num: '04',
+                title: 'Single Point of Contact',
+                desc: 'One engagement team managing all jurisdictions, ensuring consistency and clear communication.'
+              },
+            ].map((item, i) => (
+              <div
+                key={i}
+                className="group bg-[#0a0f18] p-10 hover:bg-[#0f1520] transition-all duration-500 relative"
+              >
+                {/* Top accent line */}
+                <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#2a9d96]/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                <span className="text-[#2a9d96] text-xs font-medium tracking-[0.2em] block mb-6">
+                  {item.num}
+                </span>
+                <h3 className="!text-[#3ec9c1] text-xl font-medium mb-4" style={{ fontFamily: 'var(--font-display)' }}>
+                  {item.title}
+                </h3>
+                <p className="text-white/70 text-sm leading-relaxed">
+                  {item.desc}
+                </p>
+              </div>
             ))}
           </div>
+        </div>
+      </section>
 
-          <div className="mt-12 text-center">
-            <Link href="/services" className="inline-flex items-center text-[var(--color-teal)] font-medium hover:underline">
-              View all services
-              <ArrowRight className="w-4 h-4 ml-2" />
-            </Link>
+      {/* Services Section - Editorial Light */}
+      <section className="py-32 bg-[#fdfcfa]">
+        <div className="container">
+          {/* Section Header */}
+          <div className="grid lg:grid-cols-2 gap-16 mb-20">
+            <div>
+              <span className="text-[#1d7a74] text-sm font-medium tracking-[0.3em] uppercase block mb-4">
+                Our Services
+              </span>
+              <h2 className="text-[#0a0f18] text-4xl md:text-5xl font-light leading-tight" style={{ fontFamily: 'var(--font-display)' }}>
+                Comprehensive professional
+                <br />
+                <span className="italic">service lines</span>
+              </h2>
+            </div>
+            <div className="flex items-end">
+              <p className="text-[#64748b] text-lg leading-relaxed max-w-lg">
+                From transaction processing to strategic advisory, each service line is built for
+                the complexities of multi-jurisdictional operations in Southeast Europe.
+              </p>
+            </div>
+          </div>
+
+          {/* Services Grid */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-[#e2e8f0]">
+            {services.map((service, i) => (
+              <Link
+                key={service.slug}
+                href={`/services/${service.slug}`}
+                className="group relative bg-[#fdfcfa] p-10 hover:bg-[#0a0f18] transition-all duration-700"
+              >
+                {/* Number */}
+                <div className="flex items-start justify-between mb-8">
+                  <span className="text-[#1d7a74] group-hover:text-[#2a9d96] text-xs font-medium tracking-[0.2em] transition-colors duration-500">
+                    0{i + 1}
+                  </span>
+                  <ArrowUpRight className="w-5 h-5 text-[#64748b] group-hover:text-white transition-colors duration-500" />
+                </div>
+
+                {/* Title */}
+                <h3 className="text-[#0a0f18] text-2xl mb-4 transition-colors duration-500 group-hover:!text-white" style={{ fontFamily: 'var(--font-display)' }}>
+                  {language === 'sr' ? service.titleSr || service.title : service.title}
+                </h3>
+
+                {/* Description */}
+                <p className="text-[#64748b] group-hover:text-white/80 text-sm leading-relaxed mb-8 transition-colors duration-500">
+                  {language === 'sr' ? service.descriptionSr || service.description : service.description}
+                </p>
+
+                {/* Link */}
+                <div className="flex items-center gap-2 text-[#1d7a74] group-hover:text-white text-sm font-medium transition-colors duration-500">
+                  <span>Explore</span>
+                  <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+                </div>
+
+                {/* Bottom accent */}
+                <div className="absolute bottom-0 left-0 right-0 h-px bg-[#1d7a74] scale-x-0 group-hover:scale-x-100 transition-transform duration-700 origin-left" />
+              </Link>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Jurisdictions Section */}
-      <section className="py-20">
+      {/* Jurisdictions Section - Map Style */}
+      <section className="py-32 bg-[#0a0f18]">
         <div className="container">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <h2 className="text-3xl font-semibold text-[var(--color-navy)] mb-4">
-                Regional Coverage Across Southeast Europe
+          <div className="grid lg:grid-cols-2 gap-20">
+            {/* Left - Content */}
+            <div className="lg:sticky lg:top-32 lg:self-start">
+              <span className="text-[#2a9d96] text-sm font-medium tracking-[0.3em] uppercase block mb-4">
+                Regional Coverage
+              </span>
+              <h2 className="text-4xl md:text-5xl font-light leading-tight mb-8" style={{ fontFamily: 'var(--font-display)' }}>
+                <span className="text-[#2a9d96]">Six jurisdictions,</span>
+                <br />
+                <span className="italic text-white">one partner</span>
               </h2>
-              <p className="text-[var(--color-slate)] mb-6">
-                We provide services across six Southeast European jurisdictions, offering coordinated support for groups with multiple regional entities and consistent reporting standards.
+              <p className="text-white/70 text-lg leading-relaxed mb-10 max-w-md">
+                Whether entering one market or managing operations across the region,
+                we provide consistent, coordinated services with deep local expertise.
               </p>
-              <ul className="space-y-3 mb-8">
-                <li className="flex items-center space-x-3">
-                  <CheckCircle className="w-5 h-5 text-[var(--color-teal)]" />
-                  <span className="text-[var(--color-charcoal)]">Single point of contact for regional operations</span>
-                </li>
-                <li className="flex items-center space-x-3">
-                  <CheckCircle className="w-5 h-5 text-[var(--color-teal)]" />
-                  <span className="text-[var(--color-charcoal)]">Standardized processes and reporting</span>
-                </li>
-                <li className="flex items-center space-x-3">
-                  <CheckCircle className="w-5 h-5 text-[var(--color-teal)]" />
-                  <span className="text-[var(--color-charcoal)]">Local regulatory expertise in each jurisdiction</span>
-                </li>
-                <li className="flex items-center space-x-3">
-                  <CheckCircle className="w-5 h-5 text-[var(--color-teal)]" />
-                  <span className="text-[var(--color-charcoal)]">Cross-border transaction support</span>
-                </li>
+
+              {/* Feature list */}
+              <ul className="space-y-4 mb-12">
+                {[
+                  'Single point of contact for all jurisdictions',
+                  'Standardized processes, localized execution',
+                  'Cross-border coordination and planning',
+                  'Deep regulatory expertise in each market',
+                ].map((item, i) => (
+                  <li key={i} className="flex items-start gap-4">
+                    <div className="w-1.5 h-1.5 rounded-full bg-[#2a9d96] mt-2.5 flex-shrink-0" />
+                    <span className="text-white/80 text-sm leading-relaxed">{item}</span>
+                  </li>
+                ))}
               </ul>
-              <Link href="/jurisdictions" className="btn btn-secondary">
+
+              <Link
+                href="/jurisdictions"
+                className="group inline-flex items-center gap-3 border border-white/20 text-white px-6 py-3 text-sm font-medium tracking-[0.1em] uppercase hover:bg-white hover:text-[#0a0f18] transition-all duration-500"
+              >
                 Explore Jurisdictions
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>
 
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+            {/* Right - Jurisdiction Cards */}
+            <div className="grid grid-cols-2 lg:grid-cols-3 gap-3">
               {jurisdictions.map((jurisdiction) => (
                 <Link
                   key={jurisdiction.slug}
                   href={`/jurisdictions/${jurisdiction.slug}`}
-                  className="card card-bordered text-center hover:border-[var(--color-teal)] transition-colors"
+                  className="group relative bg-white/5 border border-white/10 p-5 hover:bg-white/10 hover:border-[#2a9d96]/50 transition-all duration-500"
                 >
-                  <span className="w-10 h-10 rounded bg-[var(--color-navy)] flex items-center justify-center mx-auto mb-2">
-                    <span className="text-white font-bold text-sm">{jurisdiction.code}</span>
-                  </span>
-                  <span className="font-medium text-[var(--color-navy)]">{jurisdiction.name}</span>
+                  <div className="flex items-start justify-between mb-3">
+                    <div className="flex items-center gap-2">
+                      <div className="relative w-8 h-6 overflow-hidden">
+                        <img
+                          src={jurisdiction.flag}
+                          alt={jurisdiction.name}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <span className="text-white/60 text-xs font-medium tracking-wider">{jurisdiction.code}</span>
+                    </div>
+                    <ArrowUpRight className="w-4 h-4 text-white/40 group-hover:text-[#2a9d96] transition-colors" />
+                  </div>
+                  <h3 className="!text-[#3ec9c1] text-base font-medium mb-2" style={{ fontFamily: 'var(--font-display)' }}>
+                    {language === 'sr' ? jurisdiction.nameSr || jurisdiction.name : jurisdiction.name}
+                  </h3>
+                  <div className="flex flex-col gap-1 text-xs text-white/60">
+                    <span>CIT: {jurisdiction.taxSystem.citRate}</span>
+                    <span>VAT: {jurisdiction.taxSystem.vatRate}</span>
+                  </div>
                 </Link>
               ))}
             </div>
@@ -168,74 +338,125 @@ export default function Home() {
         </div>
       </section>
 
-      {/* About Section */}
-      <section className="py-20 bg-[var(--color-navy)] text-white">
+      {/* About / Trust Section */}
+      <section className="py-32 bg-[#fdfcfa] border-t border-[#e2e8f0]">
         <div className="container">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="grid lg:grid-cols-2 gap-20 items-center">
+            {/* Left - Content */}
             <div>
-              <h2 className="text-3xl font-semibold mb-4">
-                Established Capability Since 2013
+              <span className="text-[#1d7a74] text-sm font-medium tracking-[0.3em] uppercase block mb-4">
+                About Norventure
+              </span>
+              <h2 className="text-[#0a0f18] text-4xl md:text-5xl font-light leading-tight mb-8" style={{ fontFamily: 'var(--font-display)' }}>
+                Built for international
+                <br />
+                <span className="italic">groups like yours</span>
               </h2>
-              <p className="text-gray-300 mb-6">
-                Founded in 2013, Norventure Services has developed into a comprehensive accounting and corporate services firm. Our team combines deep regional knowledge with international service standards to support businesses operating across Southeast Europe.
+              <p className="text-[#64748b] text-lg leading-relaxed mb-6 max-w-lg">
+                We understand the challenges of managing regional operations—different regulations,
+                currencies, languages, and business practices across borders.
               </p>
-              <p className="text-gray-300 mb-8">
-                We serve as the local finance function for subsidiaries of multinational groups, regional holding companies, and international businesses establishing presence in the region.
+              <p className="text-[#64748b] leading-relaxed mb-10 max-w-lg">
+                Our firm was established to address exactly this complexity. We combine local
+                expertise with international standards, delivering consistent service quality
+                while navigating each jurisdiction's unique requirements.
               </p>
-              <div className="grid grid-cols-3 gap-8 mb-8">
-                <div>
-                  <div className="text-3xl font-semibold text-[var(--color-teal)]">10+</div>
-                  <div className="text-sm text-gray-400">Years Experience</div>
-                </div>
-                <div>
-                  <div className="text-3xl font-semibold text-[var(--color-teal)]">6</div>
-                  <div className="text-sm text-gray-400">Jurisdictions</div>
-                </div>
-                <div>
-                  <div className="text-3xl font-semibold text-[var(--color-teal)]">50+</div>
-                  <div className="text-sm text-gray-400">Group Clients</div>
-                </div>
-              </div>
               <Link
                 href="/about"
-                className="inline-flex items-center px-6 py-3 bg-white text-[var(--color-navy)] font-medium rounded hover:bg-gray-100 transition-colors"
+                className="group inline-flex items-center gap-3 text-[#0a0f18] font-medium"
               >
-                About Our Firm
+                <span className="border-b border-[#0a0f18]/30 group-hover:border-[#1d7a74] transition-colors pb-1">
+                  Learn more about our firm
+                </span>
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>
 
-            <div className="space-y-6">
-              <div className="bg-white/10 rounded-lg p-6">
-                <h3 className="font-semibold text-lg mb-3">Who We Serve</h3>
-                <ul className="space-y-2 text-gray-300">
-                  <li>• Subsidiaries of multinational corporations</li>
-                  <li>• Regional holding companies</li>
-                  <li>• Private equity portfolio companies</li>
-                  <li>• International businesses entering SEE markets</li>
-                  <li>• Companies requiring multi-jurisdiction coordination</li>
-                </ul>
+            {/* Right - Info Cards */}
+            <div className="space-y-4">
+              <div className="grid grid-cols-2 gap-4">
+                <div className="bg-[#0a0f18] p-8">
+                  <h4 className="!text-[#3ec9c1] text-lg font-medium mb-4" style={{ fontFamily: 'var(--font-display)' }}>
+                    Who We Serve
+                  </h4>
+                  <ul className="space-y-3 text-white/80 text-sm">
+                    <li>International groups with SEE subsidiaries</li>
+                    <li>PE-backed portfolio companies</li>
+                    <li>Companies entering the region</li>
+                    <li>Regional headquarters</li>
+                  </ul>
+                </div>
+                <div className="bg-[#0a0f18] p-8">
+                  <h4 className="!text-[#3ec9c1] text-lg font-medium mb-4" style={{ fontFamily: 'var(--font-display)' }}>
+                    Our Approach
+                  </h4>
+                  <ul className="space-y-3 text-white/80 text-sm">
+                    <li>Single engagement team</li>
+                    <li>Standardized processes</li>
+                    <li>Proactive communication</li>
+                    <li>IFRS-aligned reporting</li>
+                  </ul>
+                </div>
               </div>
-              <div className="bg-white/10 rounded-lg p-6">
-                <h3 className="font-semibold text-lg mb-3">Systems & Technology</h3>
-                <ul className="space-y-2 text-gray-300">
-                  <li>• SAP, Oracle, Microsoft Dynamics integration</li>
-                  <li>• Local accounting software expertise</li>
-                  <li>• Group reporting system connectivity</li>
-                  <li>• Secure data handling and transfer</li>
-                </ul>
+              <div className="bg-[#1d7a74] p-8">
+                <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                  <div>
+                    <h4 className="text-white text-xl font-medium mb-2" style={{ fontFamily: 'var(--font-display)' }}>
+                      Ready to discuss your requirements?
+                    </h4>
+                    <p className="text-white/90 text-sm">Schedule a consultation with our team.</p>
+                  </div>
+                  <Link
+                    href="/contact"
+                    className="inline-flex items-center gap-2 bg-white text-[#0a0f18] px-6 py-3 text-sm font-medium tracking-[0.05em] uppercase hover:bg-white/90 transition-colors flex-shrink-0"
+                  >
+                    Contact Us
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <CTASection
-        title="Ready to Discuss Your Requirements?"
-        description="Contact us to learn how we can support your business with accounting, tax, and corporate services across Southeast Europe."
-        buttonText="Contact Us"
-        buttonHref="/contact"
-      />
+      {/* Final CTA - Minimal */}
+      <section className="py-32 bg-[#0a0f18]">
+        <div className="container">
+          <div className="max-w-3xl mx-auto text-center">
+            <h2 className="text-4xl md:text-5xl font-light leading-tight mb-8" style={{ fontFamily: 'var(--font-display)' }}>
+              <span className="text-[#2a9d96]">Let's discuss your</span>
+              <br />
+              <span className="italic text-white">regional operations</span>
+            </h2>
+            <p className="text-white/70 text-lg leading-relaxed mb-12 max-w-xl mx-auto">
+              Whether expanding into Southeast Europe or optimizing existing operations,
+              we're here to help. Schedule a consultation to explore how we can support your group.
+            </p>
+            <div className="flex flex-wrap justify-center gap-4">
+              <Link
+                href="/contact"
+                className="group inline-flex items-center gap-3 bg-white text-[#0a0f18] px-8 py-4 text-sm font-medium tracking-[0.1em] uppercase hover:bg-[#2a9d96] hover:text-white transition-all duration-500"
+              >
+                Schedule Consultation
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </Link>
+              <Link
+                href="/services"
+                className="group inline-flex items-center gap-3 border border-white/30 text-white px-8 py-4 text-sm font-medium tracking-[0.1em] uppercase hover:bg-white/10 hover:border-white/50 transition-all duration-500"
+              >
+                View All Services
+              </Link>
+            </div>
+
+            {/* Subtle divider */}
+            <div className="mt-20 flex items-center justify-center gap-4">
+              <div className="h-px w-16 bg-gradient-to-r from-transparent to-white/30" />
+              <span className="text-white/50 text-xs tracking-[0.3em] uppercase">Norventure Services</span>
+              <div className="h-px w-16 bg-gradient-to-l from-transparent to-white/30" />
+            </div>
+          </div>
+        </div>
+      </section>
     </>
   );
 }

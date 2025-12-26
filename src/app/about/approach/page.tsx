@@ -1,13 +1,7 @@
-import { Metadata } from 'next';
-import Link from 'next/link';
-import PageHeader from '@/components/PageHeader';
-import CTASection from '@/components/CTASection';
-import { CheckCircle, ArrowRight } from 'lucide-react';
+'use client';
 
-export const metadata: Metadata = {
-  title: 'Our Approach',
-  description: 'How Norventure Services delivers accounting, tax, and corporate services to international clients in Southeast Europe.',
-};
+import Link from 'next/link';
+import { CheckCircle, ArrowRight, ChevronRight } from 'lucide-react';
 
 const principles = [
   {
@@ -78,23 +72,53 @@ const processSteps = [
 export default function ApproachPage() {
   return (
     <>
-      <PageHeader
-        title="Our Approach"
-        subtitle="How we deliver services and build lasting client relationships."
-        breadcrumbs={[
-          { label: 'About', href: '/about' },
-          { label: 'Our Approach' },
-        ]}
-      />
+      {/* Hero Section */}
+      <section className="relative min-h-[60vh] flex items-center overflow-hidden bg-[#0a0f18] -mt-[80px] pt-[80px]">
+        <div className="absolute inset-0 z-0">
+          <img src="/hero-all.png" alt="Our Approach" className="absolute inset-0 w-full h-full object-cover" />
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg, rgba(10, 15, 24, 0.9) 0%, rgba(10, 15, 24, 0.75) 50%, rgba(10, 15, 24, 0.85) 100%)' }} />
+        </div>
 
-      {/* Core Principles */}
-      <section className="section">
+        <div className="container relative z-10 py-24">
+          <div className="max-w-3xl">
+            {/* Breadcrumb */}
+            <div className="flex items-center gap-2 mb-8">
+              <Link href="/" className="text-white/60 text-sm hover:text-white transition-colors">Home</Link>
+              <ChevronRight className="w-4 h-4 text-white/40" />
+              <Link href="/about" className="text-white/60 text-sm hover:text-white transition-colors">About</Link>
+              <ChevronRight className="w-4 h-4 text-white/40" />
+              <span className="text-white text-sm">Our Approach</span>
+            </div>
+
+            <div className="flex items-center gap-4 mb-6">
+              <div className="h-px w-12 bg-gradient-to-r from-[#2a9d96] to-transparent" />
+              <span className="text-[#2a9d96] text-sm font-medium tracking-[0.3em] uppercase">Our Approach</span>
+            </div>
+            <h1 className="mb-6" style={{ fontFamily: 'var(--font-display)', fontWeight: 400, lineHeight: 1.1 }}>
+              <span className="text-[#2a9d96] text-4xl md:text-5xl lg:text-6xl">Our Approach</span>
+            </h1>
+
+            <p className="text-xl text-white/80 max-w-2xl leading-relaxed">
+              Building lasting client relationships through operational excellence and senior-level engagement.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Core Principles - Light Section */}
+      <section className="py-28 bg-[#fdfcfa]">
         <div className="container">
-          <div className="max-w-3xl mb-12">
-            <h2 className="text-3xl font-semibold text-[var(--color-navy)] mb-4">
+          <div className="max-w-3xl mb-16">
+            <p className="text-[#2a9d96] text-sm font-medium tracking-[0.3em] uppercase mb-4">
               Core Principles
+            </p>
+            <h2
+              className="text-3xl md:text-4xl font-light text-[#0a0f18] mb-6"
+              style={{ fontFamily: 'var(--font-display)' }}
+            >
+              What Sets Us Apart
             </h2>
-            <p className="text-[var(--color-charcoal)]">
+            <p className="text-[#0a0f18]/70 text-lg">
               Our service delivery is built on principles developed over a decade of serving international clients. These principles distinguish our approach from both large firms and local providers.
             </p>
           </div>
@@ -103,20 +127,23 @@ export default function ApproachPage() {
             {principles.map((principle, index) => (
               <div
                 key={index}
-                className="grid lg:grid-cols-2 gap-8 pb-12 border-b border-[var(--color-gray-border)] last:border-0"
+                className="grid lg:grid-cols-2 gap-8 pb-12 border-b border-[#0a0f18]/10 last:border-0"
               >
                 <div>
-                  <h3 className="text-2xl font-semibold text-[var(--color-navy)] mb-4">
+                  <h3
+                    className="text-2xl font-light text-[#0a0f18] mb-4"
+                    style={{ fontFamily: 'var(--font-display)' }}
+                  >
                     {principle.title}
                   </h3>
-                  <p className="text-[var(--color-charcoal)]">{principle.description}</p>
+                  <p className="text-[#0a0f18]/70">{principle.description}</p>
                 </div>
                 <div>
                   <ul className="space-y-3">
                     {principle.points.map((point, i) => (
                       <li key={i} className="flex items-start space-x-3">
-                        <CheckCircle className="w-5 h-5 text-[var(--color-teal)] flex-shrink-0 mt-0.5" />
-                        <span className="text-[var(--color-charcoal)]">{point}</span>
+                        <CheckCircle className="w-5 h-5 text-[#2a9d96] flex-shrink-0 mt-0.5" />
+                        <span className="text-[#0a0f18]/70">{point}</span>
                       </li>
                     ))}
                   </ul>
@@ -127,14 +154,20 @@ export default function ApproachPage() {
         </div>
       </section>
 
-      {/* Engagement Process */}
-      <section className="section bg-[var(--color-gray-light)]">
+      {/* Engagement Process - Dark Section */}
+      <section className="py-28 bg-[#0a0f18]">
         <div className="container">
-          <div className="max-w-3xl mx-auto text-center mb-12">
-            <h2 className="text-3xl font-semibold text-[var(--color-navy)] mb-4">
+          <div className="max-w-3xl mx-auto text-center mb-16">
+            <p className="text-[#2a9d96] text-sm font-medium tracking-[0.3em] uppercase mb-4">
+              Our Process
+            </p>
+            <h2
+              className="text-3xl md:text-4xl font-light mb-6"
+              style={{ fontFamily: 'var(--font-display)', color: '#3ec9c1' }}
+            >
               Engagement Process
             </h2>
-            <p className="text-[var(--color-charcoal)]">
+            <p className="text-white/70 text-lg">
               Our structured engagement process ensures smooth transitions and consistent service delivery from the start.
             </p>
           </div>
@@ -142,15 +175,18 @@ export default function ApproachPage() {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {processSteps.map((step, index) => (
               <div key={index} className="relative">
-                <div className="text-5xl font-bold text-[var(--color-teal)]/20 mb-4">
+                <div className="text-6xl font-bold text-[#2a9d96]/20 mb-4">
                   {step.number}
                 </div>
-                <h3 className="text-lg font-semibold text-[var(--color-navy)] mb-2">
+                <h3
+                  className="text-xl font-light text-white mb-3"
+                  style={{ fontFamily: 'var(--font-display)' }}
+                >
                   {step.title}
                 </h3>
-                <p className="text-sm text-[var(--color-charcoal)]">{step.description}</p>
+                <p className="text-white/60 text-sm">{step.description}</p>
                 {index < processSteps.length - 1 && (
-                  <ArrowRight className="hidden lg:block absolute top-8 -right-4 w-6 h-6 text-[var(--color-teal)]/30" />
+                  <ArrowRight className="hidden lg:block absolute top-10 -right-4 w-6 h-6 text-[#2a9d96]/40" />
                 )}
               </div>
             ))}
@@ -158,14 +194,20 @@ export default function ApproachPage() {
         </div>
       </section>
 
-      {/* What This Means */}
-      <section className="section">
+      {/* What This Means - Light Section */}
+      <section className="py-28 bg-[#fdfcfa]">
         <div className="container">
           <div className="max-w-3xl">
-            <h2 className="text-3xl font-semibold text-[var(--color-navy)] mb-6">
+            <p className="text-[#2a9d96] text-sm font-medium tracking-[0.3em] uppercase mb-4">
+              Client Benefits
+            </p>
+            <h2
+              className="text-3xl md:text-4xl font-light text-[#0a0f18] mb-8"
+              style={{ fontFamily: 'var(--font-display)' }}
+            >
               What This Means for Clients
             </h2>
-            <div className="space-y-4 text-[var(--color-charcoal)]">
+            <div className="space-y-6 text-[#0a0f18]/70 text-lg">
               <p>
                 Our approach translates to tangible benefits: reduced management overhead for your team, consistent and predictable service delivery, and a local partner who understands your broader business context.
               </p>
@@ -180,39 +222,78 @@ export default function ApproachPage() {
         </div>
       </section>
 
-      {/* About Navigation */}
-      <section className="section bg-[var(--color-gray-light)]">
+      {/* About Navigation - Dark Section */}
+      <section className="py-28 bg-[#0a0f18]">
         <div className="container">
-          <h2 className="text-2xl font-semibold text-[var(--color-navy)] mb-8">
+          <p className="text-[#2a9d96] text-sm font-medium tracking-[0.3em] uppercase mb-4">
+            Explore More
+          </p>
+          <h2
+            className="text-2xl md:text-3xl font-light mb-12"
+            style={{ fontFamily: 'var(--font-display)', color: '#3ec9c1' }}
+          >
             Learn More About Us
           </h2>
           <div className="grid md:grid-cols-3 gap-6">
             <Link
               href="/about/leadership"
-              className="block p-6 bg-white rounded-lg border border-[var(--color-gray-border)] hover:border-[var(--color-teal)] transition-colors"
+              className="block p-8 bg-white/5 border border-white/10 hover:border-[#2a9d96]/50 hover:bg-white/10 transition-all group"
             >
-              <h3 className="font-semibold text-[var(--color-navy)] mb-2">Leadership</h3>
-              <p className="text-sm text-[var(--color-slate)]">Meet our leadership team and their professional backgrounds.</p>
+              <h3 className="!text-[#3ec9c1] font-medium mb-2" style={{ fontFamily: 'var(--font-display)' }}>Leadership</h3>
+              <p className="text-sm text-white/60">Meet our leadership team and their professional backgrounds.</p>
             </Link>
             <Link
               href="/about/infrastructure"
-              className="block p-6 bg-white rounded-lg border border-[var(--color-gray-border)] hover:border-[var(--color-teal)] transition-colors"
+              className="block p-8 bg-white/5 border border-white/10 hover:border-[#2a9d96]/50 hover:bg-white/10 transition-all group"
             >
-              <h3 className="font-semibold text-[var(--color-navy)] mb-2">Infrastructure</h3>
-              <p className="text-sm text-[var(--color-slate)]">Our operational capability and team structure.</p>
+              <h3 className="!text-[#3ec9c1] font-medium mb-2" style={{ fontFamily: 'var(--font-display)' }}>Infrastructure</h3>
+              <p className="text-sm text-white/60">Our operational capability and team structure.</p>
             </Link>
             <Link
               href="/about/technology"
-              className="block p-6 bg-white rounded-lg border border-[var(--color-gray-border)] hover:border-[var(--color-teal)] transition-colors"
+              className="block p-8 bg-white/5 border border-white/10 hover:border-[#2a9d96]/50 hover:bg-white/10 transition-all group"
             >
-              <h3 className="font-semibold text-[var(--color-navy)] mb-2">Technology</h3>
-              <p className="text-sm text-[var(--color-slate)]">ERP systems and technology capabilities.</p>
+              <h3 className="!text-[#3ec9c1] font-medium mb-2" style={{ fontFamily: 'var(--font-display)' }}>Technology</h3>
+              <p className="text-sm text-white/60">ERP systems and technology capabilities.</p>
             </Link>
           </div>
         </div>
       </section>
 
-      <CTASection variant="dark" />
+      {/* CTA Section - Light Section */}
+      <section className="py-28 bg-[#fdfcfa]">
+        <div className="container">
+          <div className="max-w-3xl mx-auto text-center">
+            <p className="text-[#2a9d96] text-sm font-medium tracking-[0.3em] uppercase mb-4">
+              Get Started
+            </p>
+            <h2
+              className="text-3xl md:text-4xl font-light text-[#0a0f18] mb-6"
+              style={{ fontFamily: 'var(--font-display)' }}
+            >
+              Ready to Work Together?
+            </h2>
+            <p className="text-[#0a0f18]/70 text-lg mb-10">
+              Contact us to discuss how our approach can support your business operations in Southeast Europe.
+            </p>
+            <div className="flex flex-wrap justify-center gap-4">
+              <Link
+                href="/contact"
+                className="group inline-flex items-center gap-3 bg-[#0a0f18] text-white px-8 py-4 text-sm font-medium tracking-[0.1em] uppercase hover:bg-[#2a9d96] transition-all duration-500"
+              >
+                Contact Us
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </Link>
+              <Link
+                href="/services"
+                className="group inline-flex items-center gap-3 border border-[#0a0f18]/30 text-[#0a0f18] px-8 py-4 text-sm font-medium tracking-[0.1em] uppercase hover:bg-[#0a0f18] hover:text-white transition-all duration-500"
+              >
+                View Services
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
     </>
   );
 }

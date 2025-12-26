@@ -1,7 +1,9 @@
 export interface SubService {
   slug: string;
   title: string;
+  titleSr?: string;
   description: string;
+  descriptionSr?: string;
   overview: string;
   scope: string[];
   approach: string;
@@ -12,7 +14,9 @@ export interface SubService {
 export interface ServiceLine {
   slug: string;
   title: string;
+  titleSr?: string;
   description: string;
+  descriptionSr?: string;
   icon: string;
   subServices: SubService[];
 }
@@ -21,13 +25,17 @@ export const services: ServiceLine[] = [
   {
     slug: 'accounting',
     title: 'Accounting',
+    titleSr: 'Računovodstvo',
     description: 'Comprehensive accounting services from transaction processing to group consolidation, delivered to international standards.',
+    descriptionSr: 'Sveobuhvatne računovodstvene usluge od obrade transakcija do grupne konsolidacije, isporučene po međunarodnim standardima.',
     icon: 'calculator',
     subServices: [
       {
         slug: 'financial-reporting',
         title: 'Financial Reporting',
+        titleSr: 'Finansijsko izveštavanje',
         description: 'Statutory accounts and financial statements prepared under IFRS or local GAAP.',
+        descriptionSr: 'Statutarni računi i finansijski izveštaji pripremljeni prema IFRS ili lokalnim GAAP.',
         overview: 'We prepare statutory financial statements and management accounts in accordance with IFRS, local GAAP, or group reporting requirements. Our team ensures accurate, timely reporting that meets both regulatory obligations and internal management needs.',
         scope: [
           'Statutory financial statement preparation',
@@ -43,7 +51,9 @@ export const services: ServiceLine[] = [
       {
         slug: 'management-accounting',
         title: 'Management Accounting',
+        titleSr: 'Upravljačko računovodstvo',
         description: 'Internal reporting, budgeting, and KPI tracking to support operational decision-making.',
+        descriptionSr: 'Interno izveštavanje, budžetiranje i praćenje KPI-a za podršku operativnom odlučivanju.',
         overview: 'We provide management accounting services that deliver actionable financial insights. From budget preparation to variance analysis and KPI reporting, we support informed decision-making at every level.',
         scope: [
           'Budget preparation and forecasting',
@@ -109,7 +119,9 @@ export const services: ServiceLine[] = [
   {
     slug: 'tax',
     title: 'Tax',
+    titleSr: 'Porezi',
     description: 'Corporate tax, VAT, transfer pricing, and international tax services across Southeast European jurisdictions.',
+    descriptionSr: 'Korporativni porez, PDV, transferne cene i međunarodne poreske usluge širom jurisdikcija Jugoistočne Evrope.',
     icon: 'landmark',
     subServices: [
       {
@@ -214,7 +226,9 @@ export const services: ServiceLine[] = [
   {
     slug: 'payroll',
     title: 'Payroll',
+    titleSr: 'Obračun zarada',
     description: 'Payroll processing, employment tax compliance, and personnel administration services.',
+    descriptionSr: 'Obrada zarada, usklađenost poreza na zaposlenost i usluge administracije osoblja.',
     icon: 'users',
     subServices: [
       {
@@ -302,7 +316,9 @@ export const services: ServiceLine[] = [
   {
     slug: 'corporate-services',
     title: 'Corporate Services',
+    titleSr: 'Korporativne usluge',
     description: 'Company formation, corporate secretarial, and regulatory compliance services for market entry and ongoing operations.',
+    descriptionSr: 'Osnivanje kompanija, korporativni sekretarijat i usluge regulatorne usklađenosti za ulazak na tržište i tekuće operacije.',
     icon: 'building',
     subServices: [
       {
@@ -390,7 +406,9 @@ export const services: ServiceLine[] = [
   {
     slug: 'international-groups',
     title: 'International Group Services',
+    titleSr: 'Usluge za međunarodne grupe',
     description: 'Coordinated accounting, tax, and payroll services for multinational groups operating across Southeast Europe.',
+    descriptionSr: 'Koordinisane računovodstvene, poreske i usluge obračuna zarada za multinacionalne grupe koje posluju širom Jugoistočne Evrope.',
     icon: 'globe',
     subServices: [
       {
@@ -478,7 +496,9 @@ export const services: ServiceLine[] = [
   {
     slug: 'advisory',
     title: 'Advisory',
+    titleSr: 'Savetovanje',
     description: 'Transaction support, due diligence, and strategic advisory services for deals and restructuring.',
+    descriptionSr: 'Podrška transakcijama, dubinska analiza i strateške savetodavne usluge za poslove i restrukturiranje.',
     icon: 'briefcase',
     subServices: [
       {
