@@ -15,7 +15,7 @@ export default function ServicesPage() {
         {/* Image Background */}
         <div className="absolute inset-0 z-0">
           <img
-            src="/hero-all.png"
+            src="/hero-all.jpg"
             alt="Services"
             className="absolute inset-0 w-full h-full object-cover"
           />

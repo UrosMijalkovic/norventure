@@ -11,38 +11,27 @@ export default function Home() {
   const { t, language } = useLanguage();
   const [mounted, setMounted] = useState(false);
   const [activeService, setActiveService] = useState(0);
-  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     setMounted(true);
-    // Check if mobile device
-    setIsMobile(window.innerWidth < 768);
   }, []);
 
   return (
     <>
       {/* Hero Section - Cinematic */}
       <section className="relative min-h-screen flex items-center overflow-hidden bg-[#0a0f18] -mt-[80px] pt-[80px]">
-        {/* Video Background - Desktop only, static image on mobile */}
+        {/* Video Background */}
         <div className="absolute inset-0 z-0">
-          {!isMobile ? (
-            <video
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="metadata"
-              className="absolute inset-0 w-full h-full object-cover"
-            >
-              <source src="/hero.mp4" type="video/mp4" />
-            </video>
-          ) : (
-            <img
-              src="/hero-all.jpg"
-              alt="Norventure"
-              className="absolute inset-0 w-full h-full object-cover"
-            />
-          )}
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            poster="/hero-all.jpg"
+            className="absolute inset-0 w-full h-full object-cover"
+          >
+            <source src="/hero.mp4" type="video/mp4" />
+          </video>
           {/* Refined gradient overlay */}
           <div
             className="absolute inset-0"

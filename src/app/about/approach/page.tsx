@@ -75,7 +75,7 @@ export default function ApproachPage() {
       {/* Hero Section */}
       <section className="relative min-h-[60vh] flex items-center overflow-hidden bg-[#0a0f18] -mt-[80px] pt-[80px]">
         <div className="absolute inset-0 z-0">
-          <img src="/hero-all.png" alt="Our Approach" className="absolute inset-0 w-full h-full object-cover" />
+          <img src="/hero-all.jpg" alt="Our Approach" className="absolute inset-0 w-full h-full object-cover" />
           <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg, rgba(10, 15, 24, 0.9) 0%, rgba(10, 15, 24, 0.75) 50%, rgba(10, 15, 24, 0.85) 100%)' }} />
         </div>
 

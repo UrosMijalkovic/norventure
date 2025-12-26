@@ -30,7 +30,7 @@ export default function IndustryPage({ params }: PageProps) {
       >
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: 'url(/images/hero-all.png)' }}
+          style={{ backgroundImage: 'url(/hero-all.jpg)' }}
         />
         <div className="absolute inset-0 bg-black/60" />
 

@@ -26,7 +26,7 @@ export default function ServicePage({ params }: PageProps) {
       <section className="relative min-h-[60vh] flex items-center overflow-hidden bg-[#0a0f18] -mt-[80px] pt-[80px]">
         <div className="absolute inset-0 z-0">
           <img
-            src="/hero-all.png"
+            src="/hero-all.jpg"
             alt={service.title}
             className="absolute inset-0 w-full h-full object-cover"
           />
